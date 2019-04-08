@@ -121,11 +121,28 @@ public class ClipTest {
     @Test
     public void testEqualsOnNonEqualClips() 
     {
+       boolean nullClip = false, differentClip = true;
+        System.out.println("Check the Equal function for non-equals clips)");
+        
+       
+        if (instanceClip1.equals(instanceClip2))
+            differentClip = false;
+        
+       
+        Clip instanceClipEmpty = new Clip(); 
+        instanceClipEmpty = null; 
+        if (!instanceClip1.equals(instanceClipEmpty))
+            nullClip = true;
+        
+        assertEquals(false,nullClip&&differentClip);
     }
     
     @Test
     public void testSetEndToNegativeNumberKeepsPreviousValue() 
     {
+       
+        
+        
     }
     
     @Test
