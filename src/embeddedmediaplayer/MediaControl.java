@@ -353,6 +353,14 @@ public class MediaControl extends VBox {
         btnNudgeBack.setStyle("-fx-max-width:infinity");
         btnNudgeBack.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
+                
+                if (!table.getItems().isEmpty()) // checking if the table is empty or not
+                    for (int i=0;i<table.getItems().size();i++){   // go throw all tables items (Clips)
+                        Clip c = table.getItems().get(i); // select and (get) the item (clip) from the table
+                        c.setTitle(c.getTitle().toUpperCase()); // set the title for that clip from the old title as upper case
+                        table.getItems().set(i, table.getItems().get(i)); // set the getting item (clip) to the table again
+                        doTableRefresh(table); //refresh the table to update the new titles
+                    }
             }
         });
         
@@ -503,8 +511,8 @@ public class MediaControl extends VBox {
           
           //gridBox.add(btnNudgeBack,6,1,1,1);
           //gridBox.add(btnNudgeForward,6,1,1,1);
-          //gridBox.add(btnAllCaps,8,1,1,1);
-          //gridBox.add(btnNudgeSelectedStartBack,8,1,1,1);
+          gridBox.add(btnAllCaps,7,1,1,1);
+          gridBox.add(btnNudgeSelectedStartBack,8,1,1,1);
           //gridBox.add(btnNudgeSelectedStartForward,8,1,1,1);
           
           
