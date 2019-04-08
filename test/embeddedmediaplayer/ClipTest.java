@@ -101,6 +101,21 @@ public class ClipTest {
     @Test
     public void testEqualsOnEqualClips() 
     {
+        
+        boolean nullClip = false, sameClip = false;
+        System.out.println("Check the Equal function for equals clips)");
+        
+       
+        if (instanceClip1.equals(instanceClip2))
+            sameClip = true;
+        
+       
+        Clip instanceClipEmpty = new Clip(); 
+        instanceClipEmpty = null; 
+        if (!instanceClip1.equals(instanceClipEmpty))
+            nullClip = true;
+        
+        assertEquals(true,nullClip&&sameClip);
     }
     
     @Test
