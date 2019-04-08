@@ -68,6 +68,7 @@ public class ClipTest {
     @Test
     public void testSetEndBeforeStartKeepsPreviousValue()
     {
+        
     }
 
     @Test
