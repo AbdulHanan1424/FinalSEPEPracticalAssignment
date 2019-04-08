@@ -140,14 +140,23 @@ public class ClipTest {
     @Test
     public void testSetEndToNegativeNumberKeepsPreviousValue() 
     {
-       
-        
+       System.out.println("SetEnd with Negative number");
+       int initialEndTime = instanceClip1.getEnd();
+       boolean nonnegativenumber= false;
+       instanceClip1.setEnd(-1);
+        int newEndTime=instanceClip1.getEnd();
+        if(newEndTime>=0)
+        {
+            nonnegativenumber=true;
+        }
+        assertEquals(true,nonnegativenumber);
         
     }
     
     @Test
     public void testSetStartToValidPositiveNumber() 
-    {    
+    {
+       
     }
     
     
