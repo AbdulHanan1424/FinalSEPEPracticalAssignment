@@ -17,7 +17,8 @@ import static org.junit.Assert.*;
  * @author comqsjb
  */
 public class ClipTest {
-    
+    Clip instanceClip1 = new Clip(); // creating new clip for the class
+        Clip instanceClip2 = new Clip(); // creating another new clip for the class
     public ClipTest() {
     }
     
@@ -43,8 +44,7 @@ public class ClipTest {
     @Test
     public void testSetTitleToEmptyStringKeepsPreviousValue()
     {
-        Clip instanceClip1 = new Clip(); // creating new clip for the class
-        Clip instanceClip2 = new Clip(); // creating another new clip for the class
+        
         System.out.println("Set title to empty string (Keeps previous value)");
         boolean emptyStringFlag = false, nullStringFlag = false;
         
@@ -68,7 +68,34 @@ public class ClipTest {
     @Test
     public void testSetEndBeforeStartKeepsPreviousValue()
     {
+         System.out.println("Set  end time before start (Keeps previous value)");
+        boolean endBeforeStart = false, endEqualStart = false, endAtZero = false, endAtNull = false;
         
+        int initialEndTime = instanceClip1.getEnd(); 
+        instanceClip1.setEnd(instanceClip1.getStart()-5);
+        int initialendTimeAfterModified = instanceClip1.getEnd(); 
+        if (initialEndTime==initialendTimeAfterModified)
+            endBeforeStart = true;
+        
+        
+        initialEndTime = instanceClip1.getEnd();
+        instanceClip1.setEnd(instanceClip1.getStart()); 
+        initialendTimeAfterModified = instanceClip1.getEnd(); 
+        if (initialEndTime==initialendTimeAfterModified) return; 
+        endEqualStart = true; 
+        
+        
+        initialEndTime = instanceClip1.getEnd(); 
+        instanceClip1.setEnd(0); 
+        initialendTimeAfterModified = instanceClip1.getEnd(); 
+        if (initialEndTime==initialendTimeAfterModified) 
+            endAtZero = true;
+        initialEndTime = instanceClip1.getEnd();
+        instanceClip1.setEnd(null); 
+        initialendTimeAfterModified = instanceClip1.getEnd(); 
+        if (initialEndTime==initialendTimeAfterModified)
+            endAtNull = true;
+        assertEquals(true,endBeforeStart&&endEqualStart&&endAtZero&&endAtNull);
     }
 
     @Test
