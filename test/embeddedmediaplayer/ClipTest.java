@@ -156,7 +156,16 @@ public class ClipTest {
     @Test
     public void testSetStartToValidPositiveNumber() 
     {
-       
+         System.out.println("SetStart with positive number");
+       int initialStartTime = instanceClip1.getEnd();
+       boolean nonnegativenumber= false;
+       instanceClip1.setStart(-1);
+        int newStartTime=instanceClip1.getEnd();
+        if(newStartTime>=0)
+        {
+            nonnegativenumber=true;
+        }
+        assertEquals(true,nonnegativenumber);
     }
     
     
